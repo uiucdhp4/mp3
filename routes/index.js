@@ -6,7 +6,7 @@ module.exports = function (app, router) {
 
     // User Routes
     app.get('/api/users/:id', require('./userRoutes/getUser.js'));
-    // app.get('/api', require('./userRoutes/bulkGetUsers.js'));
+    app.get('/api/users', require('./userRoutes/bulkGetUsers.js'));
     app.post('/api/users', require('./userRoutes/createUser.js'));
     // app.put('/api', require('./userRoutes/updateUser.js'));
     // app.delete('/api', require('./userRoutes/deleteUser.js'));

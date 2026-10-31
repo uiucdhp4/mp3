@@ -5,6 +5,7 @@ module.exports = {
     USER_CREATED: "User created successfully!",
     NON_EXSISTENT: "This user does not exist",
     FOUND_USER: "Found the specified user!",
+    ALL_USERS: "All listed users or count in the database",
 
 
     SERVER_ERROR: "Internal Server Error"
