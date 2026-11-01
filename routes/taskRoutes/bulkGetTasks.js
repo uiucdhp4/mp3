@@ -37,7 +37,6 @@ module.exports = async function (req, res) {
 
     } catch {
         // server error (500)
-
         return sendResponse(res, 500, responseMessages.SERVER_ERROR, null);
     }
   

@@ -22,6 +22,9 @@ module.exports = async function (req, res) {
         inputAssignedUser = req.body.assignedUser;
         inputAssignedUserName = req.body.assignedUserName;
     }
+    if (req.body.completed != null) {
+        inputCompleted = req.body.completed;
+    }
 
     if (inputName == null || inputName.trim() == "" || inputDeadline == null) {
         // missing so return 400
