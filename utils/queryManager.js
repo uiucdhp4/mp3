@@ -3,14 +3,14 @@ function queryManager(req, modelType) {
     var selectQuery = {};
     var limitQuery = null;
     var whereQuery = {};
-    var sortQuery = {};
+    var sortQuery = 0;
     var skipQuery = 0;
     var countQuery = false;
 
     if (req.query.select != null) {
         selectQuery = JSON.parse(req.query.select);
     } else {
-        selectQuery = {}
+        selectQuery = {};
     }
 
     if (req.query.limit != null) {
@@ -24,13 +24,13 @@ function queryManager(req, modelType) {
     if (req.query.where != null) {
         whereQuery = JSON.parse(req.query.where);
     } else {
-        whereQuery = {}
+        whereQuery = {};
     }
 
     if (req.query.sort != null) {
         sortQuery = JSON.parse(req.query.sort);
     } else {
-        sortQuery = {}
+        sortQuery = 0;
     }
 
     if (req.query.skip != null) {
