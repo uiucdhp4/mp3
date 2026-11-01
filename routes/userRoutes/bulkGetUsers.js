@@ -13,13 +13,7 @@ module.exports = async function (req, res) {
         var returnedUsers = null;
         // console.log("COUNT QUERY" + queries.countQuery);
         if (queries.countQuery == true) {
-            returnedUsers = await User.find({})
-                .select(queries.selectQuery)
-                .limit(queries.limitQuery)
-                .where(queries.whereQuery)
-                .sort(queries.sortQuery)
-                .skip(queries.skipQuery)
-                .countDocuments(queries.countQuery);
+            returnedUsers = await User.countDocuments(queries.whereQuery);
         } else {
             returnedUsers = await User.find({})
             .select(queries.selectQuery)
