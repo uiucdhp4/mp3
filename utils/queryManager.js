@@ -3,7 +3,7 @@ function queryManager(req, modelType) {
     var selectQuery = {};
     var limitQuery = null;
     var whereQuery = {};
-    var sortQuery = 0;
+    var sortQuery = {};
     var skipQuery = 0;
     var countQuery = false;
 
@@ -30,7 +30,7 @@ function queryManager(req, modelType) {
     if (req.query.sort != null) {
         sortQuery = JSON.parse(req.query.sort);
     } else {
-        sortQuery = 0;
+        sortQuery = {};
     }
 
     if (req.query.skip != null) {
