@@ -13,7 +13,7 @@ module.exports = async function (req, res) {
     if (req.body.pendingTasks == null) {
         inputPendingTasks = []
     } else {
-        inputPendingTasks = req.body.email;
+        inputPendingTasks = req.body.pendingTasks;
     }
 
     // validate that the user provided a name and email (400 error):
@@ -26,7 +26,7 @@ module.exports = async function (req, res) {
         var user_exists = await User.findById(inputId);
         if (user_exists == null) {
             // verify that the email is not a duplicate (400 error)
-            return sendResponse(res, 400, responseMessages.NON_EXSISTENT, null);
+            return sendResponse(res, 404, responseMessages.NON_EXSISTENT, null);
         }
     } catch {
         // failed 500
