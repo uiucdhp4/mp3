@@ -11,7 +11,5 @@ module.exports = {
     ALL_USERS: "All listed users or count in the database",
     ALL_TASKS: "All listed tasks or count in the database",
     DELETED_USER: "Deleted user successfully!",
-
-
     SERVER_ERROR: "Internal Server Error"
 };
