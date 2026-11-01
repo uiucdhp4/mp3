@@ -13,18 +13,18 @@ module.exports = async function (req, res) {
         var returnedTasks = null;
         // console.log("COUNT QUERY" + queries.countQuery);
         if (queries.countQuery == true) {
-            returnedTasks = await Task.find(queries.whereQuery)
+            returnedTasks = await Task.find({})
                 .select(queries.selectQuery)
                 .limit(queries.limitQuery)
-                // .where(queries.whereQuery)
+                .where(queries.whereQuery)
                 .sort(queries.sortQuery)
                 .skip(queries.skipQuery)
                 .countDocuments(queries.countQuery);
         } else {
-            returnedTasks = await Task.find(queries.whereQuery)
+            returnedTasks = await Task.find({})
             .select(queries.selectQuery)
             .limit(queries.limitQuery)
-            // .where(queries.whereQuery)
+            .where(queries.whereQuery)
             .sort(queries.sortQuery)
             .skip(queries.skipQuery);
         }
