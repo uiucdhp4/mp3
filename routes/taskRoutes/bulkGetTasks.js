@@ -11,7 +11,7 @@ module.exports = async function (req, res) {
 
     try {
         var returnedTasks = null;
-        // console.log("COUNT QUERY" + queries.countQuery);
+
         if (queries.countQuery == true) {
             returnedTasks = await Task.countDocuments(queries.whereQuery);
         } else {
