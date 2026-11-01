@@ -6,6 +6,7 @@ module.exports = {
     NON_EXSISTENT: "This user does not exist",
     FOUND_USER: "Found the specified user!",
     ALL_USERS: "All listed users or count in the database",
+    DELETED_USER: "Deleted user successfully!",
 
 
     SERVER_ERROR: "Internal Server Error"

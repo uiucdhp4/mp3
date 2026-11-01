@@ -9,7 +9,7 @@ module.exports = function (app, router) {
     app.get('/api/users', require('./userRoutes/bulkGetUsers.js'));
     app.post('/api/users', require('./userRoutes/createUser.js'));
     // app.put('/api', require('./userRoutes/updateUser.js'));
-    // app.delete('/api', require('./userRoutes/deleteUser.js'));
+    app.delete('/api/users/:id', require('./userRoutes/deleteUser.js'));
 
     // Task Routes
     // app.get('/api', require('./taskRoutes/getTask.js'));
