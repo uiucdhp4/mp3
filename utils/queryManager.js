@@ -1,10 +1,10 @@
-function queryManager(req) {
+function queryManager(req, modelType) {
 
-    var selectQuery = {}
-    var limitQuery = {}
-    var whereQuery = {}
-    var sortQuery = {}
-    var skipQuery = {}
+    var selectQuery = {};
+    var limitQuery = null;
+    var whereQuery = {};
+    var sortQuery = {};
+    var skipQuery = 0;
     var countQuery = false;
 
     if (req.query.select != null) {
@@ -16,7 +16,9 @@ function queryManager(req) {
     if (req.query.limit != null) {
         limitQuery = JSON.parse(req.query.limit);
     } else {
-        limitQuery = {}
+        if (modelType == "Task") {
+            limitQuery = 100;
+        }
     }
 
     if (req.query.where != null) {
@@ -34,7 +36,7 @@ function queryManager(req) {
     if (req.query.skip != null) {
         skipQuery = JSON.parse(req.query.skip);
     } else {
-        skipQuery = {}
+        skipQuery = 0;
     }
 
     if (req.query.count != null) {

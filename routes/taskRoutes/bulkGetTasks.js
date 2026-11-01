@@ -6,10 +6,8 @@ var queryManager = require('../../utils/queryManager');
 var responseMessages = require('../../utils/responseMessages');
 
 module.exports = async function (req, res) {
-    // Retrieve one tasks
-    var inputId = req.params.id;
-
-    var queries = queryManager(req);
+    // Retrieve all tasks
+    var queries = queryManager(req, "Task");
 
     try {
         var returnedTasks = null;

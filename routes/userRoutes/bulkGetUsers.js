@@ -6,10 +6,8 @@ var queryManager = require('../../utils/queryManager');
 var responseMessages = require('../../utils/responseMessages');
 
 module.exports = async function (req, res) {
-    // Retrieve one user
-    var inputId = req.params.id;
-
-    var queries = queryManager(req);
+    // Retrieve all users
+    var queries = queryManager(req, "User");
 
     try {
         var returnedUsers = null;
