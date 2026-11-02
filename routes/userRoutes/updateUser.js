@@ -49,7 +49,7 @@ module.exports = async function (req, res) {
                 return sendResponse(res, 400, responseMessages.INVALID_REQUEST, null);
             }
 
-            tasks.push(task);
+            tasks.push(task_update);
         }
     } catch (error) {
         console.log(error);
