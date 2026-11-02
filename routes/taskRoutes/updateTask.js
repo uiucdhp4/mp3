@@ -29,7 +29,7 @@ module.exports = async function (req, res) {
 
     var inputName = updateFields(req.body.name, null); 
     var inputDescription = updateFields(req.body.description, "Missing Task Description"); 
-    var inputDeadline = updateFields(req.body.inputDeadline, null);
+    var inputDeadline = updateFields(req.body.deadline, null);
     var inputCompleted = updateFields(req.body.completed, false);
     var inputAssignedUser = updateFields(req.body.assignedUser, "");;
     var inputAssignedUserName = updateFields(req.body.assignedUserName, "unassigned");
