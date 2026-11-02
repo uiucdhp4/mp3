@@ -80,7 +80,7 @@ module.exports = async function (req, res) {
             await Task.findByIdAndUpdate(inputId, {$set: {assignedUserName: inputAssignedUserName}});
 
             if (inputCompleted == false) {
-                await User.findByIdAndUpdate(newAssignedUser, {$addToSet: {pendingTasks: inputId}});
+                await User.findByIdAndUpdate(newAssignedUser._id, {$addToSet: {pendingTasks: inputId}});
             }
 
         } catch (error) {
