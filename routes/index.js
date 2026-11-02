@@ -15,6 +15,6 @@ module.exports = function (app, router) {
     app.get('/api/tasks/:id', require('./taskRoutes/getTask.js'));
     app.get('/api/tasks', require('./taskRoutes/bulkGetTasks.js'));
     app.post('/api/tasks', require('./taskRoutes/createTask.js'));
-    // app.put('/api', require('./taskRoutes/updateTask.js'));
+    app.put('/api/tasks/:id', require('./taskRoutes/updateTask.js'));
     app.delete('/api/tasks/:id', require('./taskRoutes/deleteTask.js'));
 };

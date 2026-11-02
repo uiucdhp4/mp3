@@ -6,6 +6,7 @@ module.exports = {
     USER_CREATED: "User created successfully!",
     USER_UPDATED: "User updated successfully",
     TASK_CREATED: "Task created successfully",
+    TASK_UPDATED: "Task updated successfully",
     NON_EXSISTENT: "This user/task does not exist",
     FOUND_USER: "Found the specified user!",
     FOUND_TASK: "Found the specified task!",

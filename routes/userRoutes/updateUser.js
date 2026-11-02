@@ -41,7 +41,7 @@ module.exports = async function (req, res) {
     try {
         await user_exists.save()
         // succeeded (201 with resource in data)
-        return sendResponse(res, 201, responseMessages.USER_UPDATED, user_exists);
+        return sendResponse(res, 200, responseMessages.USER_UPDATED, user_exists);
 
     } catch {
         // failed (500 error)
