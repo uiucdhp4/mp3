@@ -64,7 +64,9 @@ module.exports = async function (req, res) {
     // task moved from pending -> completed, so remove from user's pending tasks
     if (task_exists.completed == false && inputCompleted == true) {
         try {
-            await User.findByIdAndUpdate(oldAssignedUser._id, {$pull: {pendingTasks: inputId}});
+            if (oldAssignedUser != null ) {
+                await User.findByIdAndUpdate(oldAssignedUser._id, {$pull: {pendingTasks: inputId}});
+            }
         } catch (error) {
             // failed 500
             console.log(error)
