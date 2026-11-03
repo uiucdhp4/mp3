@@ -62,17 +62,24 @@ module.exports = async function (req, res) {
     // 2-way referencing stuff
 
     // task moved from pending -> completed, so remove from user's pending tasks
-    if (task_exists.completed == false && inputCompleted == true) {
-        try {
-            if (oldAssignedUser != null ) {
-                await User.findByIdAndUpdate(oldAssignedUser._id, {$pull: {pendingTasks: inputId}});
-            }
-        } catch (error) {
-            // failed 500
-            console.log(error)
-            return sendResponse(res, 500, responseMessages.SERVER_ERROR, null);
+
+    try {
+        // Remove task from old user's pending tasks if it was assigned
+        if (oldAssignedUser != null && (task_exists.assignedUser !== inputAssignedUser || inputCompleted == true)) {
+            await User.findByIdAndUpdate(oldAssignedUser._id, {$pull: {pendingTasks: inputId}});
         }
+
+        // Add task to new user's pending tasks if assigned and not completed
+        if (newAssignedUser != null && inputCompleted == false) {
+            await User.findByIdAndUpdate(newAssignedUser._id, {$addToSet: {pendingTasks: inputId}});
+        }
+
+    } catch (error) {
+        // 500 failed
+        console.log(error);
+        return sendResponse(res, 500, responseMessages.SERVER_ERROR, null);
     }
+
 
     // if changing the task's assigned user
     if (task_exists.assignedUser !== inputAssignedUser) {
