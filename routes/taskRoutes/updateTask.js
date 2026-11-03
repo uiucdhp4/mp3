@@ -80,32 +80,6 @@ module.exports = async function (req, res) {
         return sendResponse(res, 500, responseMessages.SERVER_ERROR, null);
     }
 
-
-    // if changing the task's assigned user
-    if (task_exists.assignedUser !== inputAssignedUser) {
-        try {
-            await User.findByIdAndUpdate(oldAssignedUser._id, {$pull: {pendingTasks: inputId}});
-            await Task.findByIdAndUpdate(inputId, {assignedUser: inputAssignedUser});
-            await Task.findByIdAndUpdate(inputId, {$set: {assignedUserName: inputAssignedUserName}});
-
-            if (inputCompleted == false) {
-                await User.findByIdAndUpdate(newAssignedUser._id, {$addToSet: {pendingTasks: inputId}});
-            }
-
-        } catch (error) {
-            // failed 500
-            console.log(error)
-            return sendResponse(res, 500, responseMessages.SERVER_ERROR, null);
-        }
-    }
-
-    // completed task turns into pending
-    if ((task_exists.assignedUser != inputAssignedUser) || inputCompleted == true) {
-        if (oldAssignedUser != null) {
-            await User.findByIdAndUpdate(oldAssignedUser._id, {$pull: {pendingTasks: inputId}});
-        }
-    }
-
     if (inputAssignedUser != "" && inputCompleted == false) {
         await User.findByIdAndUpdate(newAssignedUser._id, {$addToSet: {pendingTasks: inputId}});
     }
