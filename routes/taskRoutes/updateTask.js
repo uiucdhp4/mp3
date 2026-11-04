@@ -53,9 +53,9 @@ module.exports = async function (req, res) {
                 return sendResponse(res, 404, responseMessages.NON_EXSISTENT, null);
             }
 
-            // if (inputAssignedUserName !== newAssignedUser.name) {
-            //     return sendResponse(res, 400, responseMessages.SERVER_ERROR, null);
-            // }
+            if (inputAssignedUserName !== newAssignedUser.name) {
+                return sendResponse(res, 400, responseMessages.SERVER_ERROR, null);
+            }
         }
     } catch (error) {
         // failed 500
