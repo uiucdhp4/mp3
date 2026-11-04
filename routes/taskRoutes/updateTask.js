@@ -56,8 +56,6 @@ module.exports = async function (req, res) {
             if (inputAssignedUserName !== newAssignedUser.name) {
                 return sendResponse(res, 400, responseMessages.SERVER_ERROR, null);
             }
-        } else {
-            inputAssignedUserName = "unassigned";
         }
     } catch (error) {
         // failed 500
