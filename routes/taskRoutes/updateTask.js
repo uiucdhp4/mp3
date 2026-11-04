@@ -53,9 +53,7 @@ module.exports = async function (req, res) {
                 return sendResponse(res, 404, responseMessages.NON_EXSISTENT, null);
             }
 
-            if (inputAssignedUserName == null) {
-                inputAssignedUserName = newAssignedUser.name;
-            } else if (inputAssignedUserName !== newAssignedUser.name) {
+            if (inputAssignedUserName !== newAssignedUser.name) {
                 return sendResponse(res, 400, responseMessages.SERVER_ERROR, null);
             }
         } else {
