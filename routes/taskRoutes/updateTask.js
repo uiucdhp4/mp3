@@ -52,6 +52,14 @@ module.exports = async function (req, res) {
             if (newAssignedUser == null) {
                 return sendResponse(res, 404, responseMessages.NON_EXSISTENT, null);
             }
+
+            if (inputAssignedUserName == null) {
+                inputAssignedUserName = newAssignedUser.name;
+            } else if (inputAssignedUserName !== newAssignedUser.name) {
+                return sendResponse(res, 400, responseMessages.SERVER_ERROR, null);
+            }
+        } else {
+            inputAssignedUserName = "unassigned";
         }
     } catch (error) {
         // failed 500
